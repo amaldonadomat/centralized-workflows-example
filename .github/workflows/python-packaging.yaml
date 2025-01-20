@@ -35,7 +35,9 @@ jobs:
 
       # Build the package
       - name: Build the package
-        run: python ${{ inputs.package-path }}/setup.py sdist bdist_wheel
+        run: |
+          cd ${{ inputs.package-path }}
+          python setup.py sdist bdist_wheel
   
       # Upload the artifact
       - name: Upload artifacts
