@@ -14,6 +14,9 @@ on:
       script-path:
         description: "Path to the Python script to validate"
         required: true
+      script-input:
+        description: "Values to pass to the script"
+        required: true
     secrets:
       GITHUB_TOKEN:
         required: true
@@ -49,4 +52,4 @@ jobs:
 
       # Run the Python script
       - name: Run the script
-        run: python ${{ inputs.script-path }}
+        run: python ${{ inputs.script-path }} ${{ inputs.script-input }}
