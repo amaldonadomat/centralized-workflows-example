@@ -7,16 +7,20 @@ on:
         description: "Version of Python to use"
         required: false
         default: "3.13"
+        type: string
       requirements-file:
         description: "Path to the requirements file"
         required: false
         default: "requirements.txt"
+        type: string
       script-path:
         description: "Path to the Python script to validate"
         required: true
+        type: string
       script-input:
         description: "Values to pass to the script"
         required: true
+        type: string
 
 jobs:
   validate-python:
