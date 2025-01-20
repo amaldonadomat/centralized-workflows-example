@@ -1,0 +1,52 @@
+name: Python Validation Workflow
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: "Version of Python to use"
+        required: false
+        default: "3.13"
+      requirements-file:
+        description: "Path to the requirements file"
+        required: false
+        default: "requirements.txt"
+      script-path:
+        description: "Path to the Python script to validate"
+        required: true
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  validate-python:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Python
+      - name: Setup Python ${{ inputs.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          if [ -f ${{ inputs.requirements-file }} ]; then
+            pip install -r ${{ inputs.requirements-file }}
+          else
+            echo "No requirements file found, skipping installation."
+          fi
+
+      # Lint the Python script
+      - name: Lint script with flake8
+        run: |
+          pip install flake8
+          flake8 ${{ inputs.script-path }}
+
+      # Run the Python script
+      - name: Run the script
+        run: python ${{ inputs.script-path }}
