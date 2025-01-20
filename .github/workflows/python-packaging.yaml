@@ -9,7 +9,7 @@ on:
         default: "3.13"
         type: string
 
-      script-path:
+      package-path:
         description: "Path to the Python script to validate"
         required: true
         type: string
