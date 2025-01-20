@@ -17,9 +17,6 @@ on:
       script-input:
         description: "Values to pass to the script"
         required: true
-    secrets:
-      GITHUB_TOKEN:
-        required: true
 
 jobs:
   validate-python:
