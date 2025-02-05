@@ -9,9 +9,12 @@ pipeline {
         }
         stage('Test') {
             steps {
+                script{
                 echo 'Testing...'
                 // Add your test commands here
-                echo 'The repository is: ${params.BITBUCKET_REPO}'
+                echo "The repository is: ${params.BITBUCKET_REPO}"
+                }
+
             }
         }
         stage('Deploy') {
