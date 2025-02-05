@@ -11,6 +11,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 // Add your test commands here
+                echo '${BITBUCKET_REPO}'
             }
         }
         stage('Deploy') {
