@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script{
                 echo 'Testing...'
-                // Add your test commands here 
+                // Add your test commands here  
                 echo "The repository is: ${params.BITBUCKET_REPO}"
                 }
 
