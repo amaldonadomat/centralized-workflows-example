@@ -13,6 +13,7 @@ pipeline {
                 echo 'Testing...'
                 // Add your test commands here  
                 echo "The repository is: ${params.BITBUCKET_REPO}"
+                echo "The action that triggered this build is: ${params.PR_ACTION}"
                 }
 
             }
